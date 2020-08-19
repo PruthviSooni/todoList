@@ -5,10 +5,10 @@ class AddTasks extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme.of(context).accentColor,
+      backgroundColor: Colors.grey.shade800,
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        backgroundColor: Theme.of(context).accentColor,
+        backgroundColor: Colors.grey.shade800,
         elevation: 0,
         title: Text("Add the plan"),
         centerTitle: true,
@@ -17,28 +17,31 @@ class AddTasks extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
+            SizedBox(
+              height: 20,
+            ),
             Container(
                 margin: EdgeInsets.only(top: 30),
                 alignment: Alignment.center,
                 child: Text(
-                  "we only plna today. and must be completed today",
+                  "we only plan for today. And must be completed today",
                   style: TextStyle(
                       fontSize: 16, decorationStyle: TextDecorationStyle.wavy),
                 )),
             Container(
               margin: EdgeInsets.symmetric(vertical: 30),
-              width: MediaQuery.of(context).size.width / 1.4,
+              width: MediaQuery.of(context).size.width / 1.2,
               height: MediaQuery.of(context).size.height / 2.5,
-              padding: EdgeInsets.all(14),
+              padding: EdgeInsets.all(12),
               alignment: Alignment.center,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10),
-                color: Colors.white,
+                color: Theme.of(context).accentColor,
                 boxShadow: [
                   BoxShadow(
                     blurRadius: 3,
-                    spreadRadius: 5,
-                    color: Color(0xff6a7cd5),
+                    spreadRadius: 2,
+                    color: Colors.grey.shade700,
                   ),
                 ],
               ),
@@ -48,19 +51,15 @@ class AddTasks extends StatelessWidget {
                 children: [
                   TextField(
                     decoration: kInputDecoration.copyWith(hintText: "Title"),
+                    style: TextStyle(color: Colors.white),
                   ),
                   SizedBox(
                     height: 5,
                   ),
                   TextField(
-                    decoration: kInputDecoration.copyWith(hintText: "Details"),
+                    decoration: kInputDecoration.copyWith(hintText: "DeadLine"),
+                    style: TextStyle(color: Colors.white),
                   ),
-                  SizedBox(
-                    height: 5,
-                  ),
-                  TextField(
-                      decoration:
-                          kInputDecoration.copyWith(hintText: "DeadLine")),
                   SizedBox(
                     height: 20,
                   ),
@@ -69,7 +68,7 @@ class AddTasks extends StatelessWidget {
                     color: Colors.orangeAccent,
                     child: Text(
                       "Add",
-                      style: TextStyle(color: Colors.black),
+                      style: TextStyle(color: Colors.white),
                     ),
                     onPressed: () {},
                   ),
@@ -79,11 +78,14 @@ class AddTasks extends StatelessWidget {
             SizedBox(
               height: 40,
             ),
-            IconButton(
-                icon: Icon(Icons.close),
-                onPressed: () {
-                  Navigator.pop(context);
-                }),
+            Hero(
+              tag: "close",
+              child: IconButton(
+                  icon: Icon(Icons.close),
+                  onPressed: () {
+                    Navigator.pop(context);
+                  }),
+            ),
           ],
         ),
       ),
