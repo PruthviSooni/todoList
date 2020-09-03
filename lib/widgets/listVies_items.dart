@@ -6,9 +6,14 @@ class ListItems extends StatelessWidget {
   final String taskTime;
   final bool isChecked;
   final Function toggleCheckBox;
+  final Function longPressed;
 
   const ListItems(
-      {this.taskTitle, this.taskTime, this.isChecked, this.toggleCheckBox});
+      {this.taskTitle,
+      this.taskTime,
+      this.isChecked,
+      this.toggleCheckBox,
+      this.longPressed});
 
   @override
   Widget build(BuildContext context) {
@@ -17,9 +22,10 @@ class ListItems extends StatelessWidget {
       color: Colors.grey.shade900,
       margin: EdgeInsets.only(top: 5, bottom: 5, left: 15, right: 15),
       child: ListTile(
+        onLongPress: longPressed,
         shape: kRoundedBorders,
         title: Text(
-          taskTitle,
+          "$taskTitle",
           style: TextStyle(
             decoration: isChecked ? TextDecoration.lineThrough : null,
           ),
